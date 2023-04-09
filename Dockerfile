@@ -1,19 +1,17 @@
-FROM rust:slim AS builder
-SHELL ["/bin/bash", "-uo", "pipefail", "-c"]
+FROM alpine AS builder
 
-ENV TARGET x86_64-unknown-linux-musl
-RUN rustup target add "$TARGET"
+RUN apk add --no-cache cargo openssl-dev
 
 RUN mkdir /src
 WORKDIR /src
 COPY . .
-RUN cargo build --release --locked --target "$TARGET" \
- && mv "target/$TARGET/release/synapse_compressor" .
+RUN cargo build --release --locked
 
 
 
-FROM scratch
+FROM alpine
 
-COPY --from=builder /src/synapse_compressor /bin/synapse_compressor
+RUN apk add --no-cache libgcc libssl3
+COPY --from=builder /src/target/release/synapse_compressor /usr/local/bin/synapse_compressor
 
-CMD ["/bin/synapse_compressor"]
+CMD ["/usr/local/bin/synapse_compressor"]
