@@ -1,0 +1,28 @@
+name: Docker
+on:
+  push:
+    branches: [main]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build and Push Docker Image
+        run: |
+          image="ghcr.io/msrd0/synapse_compressor"
+          docker pull "$image:cache" || true
+          docker build . \
+            --pull \
+            --target builder \
+            --cache-from "$image:cache" \
+            --tag "$image:cache"
+          docker build . \
+            --pull \
+            --cache-from "$image:cache" \
+            --tag "$image"
+          
+          docker login -u msrd0 -p "${{secrets.GITHUB_TOKEN}}" ghcr.io
+          docker push "$image:cache"
+          docker push "$image"

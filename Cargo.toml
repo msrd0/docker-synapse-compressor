@@ -1,0 +1,24 @@
+# -*- eval: (cargo-minor-mode 1)
+
+[package]
+name = "synapse_compressor"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+clokwerk = "0.4"
+env_logger = "0.9"
+log = "0.4"
+
+[dependencies.synapse_auto_compressor]
+#git = "https://github.com/matrix-org/rust-synapse-compress-state"
+git = "https://github.com/msrd0/rust-synapse-compress-state"
+rev = "d0b7d97a75ad25d8c87b55cfae03b2fdd18ad22e"
+default-features = false
+
+[profile.release]
+lto = true
+opt-level = "z"
+strip = true
