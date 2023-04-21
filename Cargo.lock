@@ -1119,7 +1119,7 @@ dependencies = [
 [[package]]
 name = "synapse_auto_compressor"
 version = "0.1.3"
-source = "git+https://github.com/msrd0/rust-synapse-compress-state?rev=d0b7d97a75ad25d8c87b55cfae03b2fdd18ad22e#d0b7d97a75ad25d8c87b55cfae03b2fdd18ad22e"
+source = "git+https://github.com/matrix-org/rust-synapse-compress-state?rev=6a065de6fc4910da980fce862710195521fa9f81#6a065de6fc4910da980fce862710195521fa9f81"
 dependencies = [
  "anyhow",
  "env_logger",
@@ -1136,7 +1136,7 @@ dependencies = [
 [[package]]
 name = "synapse_compress_state"
 version = "0.1.0"
-source = "git+https://github.com/msrd0/rust-synapse-compress-state?rev=d0b7d97a75ad25d8c87b55cfae03b2fdd18ad22e#d0b7d97a75ad25d8c87b55cfae03b2fdd18ad22e"
+source = "git+https://github.com/matrix-org/rust-synapse-compress-state?rev=6a065de6fc4910da980fce862710195521fa9f81#6a065de6fc4910da980fce862710195521fa9f81"
 dependencies = [
  "env_logger",
  "indicatif",

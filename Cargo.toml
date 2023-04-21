@@ -13,9 +13,8 @@ env_logger = "0.9"
 log = "0.4"
 
 [dependencies.synapse_auto_compressor]
-#git = "https://github.com/matrix-org/rust-synapse-compress-state"
-git = "https://github.com/msrd0/rust-synapse-compress-state"
-rev = "d0b7d97a75ad25d8c87b55cfae03b2fdd18ad22e"
+git = "https://github.com/matrix-org/rust-synapse-compress-state"
+rev = "6a065de6fc4910da980fce862710195521fa9f81"
 default-features = false
 
 [profile.release]
